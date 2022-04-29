@@ -7,8 +7,17 @@
     <!-- CUSTOM STYLES -->
     <link href="assets/css/styles.css" rel="stylesheet" />
     <link href="assets/css/logo.css" rel="stylesheet" />
+    <link href="assets/css/clock.css" rel="stylesheet" />
+
+    <!-- ICON -->
+    <link rel="shortcut icon" href="assets/images/favico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/images/favico/apple-touch-icon-57-precomposed.png">
 </head>
 <body>
+    <span id="rel" class="digital-clock"></span>
     <div class="clock">
         <div class="outer-clock-face">
             <div class="marking marking-one"></div>
@@ -45,6 +54,28 @@
     setInterval(setDate, 1000);
 
     setDate();
+
+    function relogio(){
+        let data = new Date();
+        let hor = data.getHours();
+        let min = data.getMinutes();
+        let seg = data.getSeconds();
+
+        if (hor < 10){
+            hor="0"+hor;
+        }
+        if (min < 10){
+            min="0"+min;
+        }
+        if (seg < 10){
+            seg="0"+seg;
+        }
+
+        let horas = hor + ":" + min + ":" + seg;
+
+        document.getElementById("rel").innerHTML = horas;
+    }
+    setInterval(relogio,1000);
 </script>
 </body>
 </html>
